@@ -5,8 +5,7 @@ import "./TodoForm.scss"
 const TodoForm:React.FC = () => {
     const [value,setValue] = useState('');
 
-const addTodo:React.MouseEventHandler<HTMLButtonElement> = (el) => {
-    el.preventDefault();
+const addTodo = () => {
     if(value.trim().length>0){
         console.log("value =", value);
         setValue("");
@@ -22,7 +21,7 @@ const addTodo:React.MouseEventHandler<HTMLButtonElement> = (el) => {
             />
         </div>
         <div className="form-btns">
-            <button onClick={addTodo}>add ToDo</button>
+            <button type="button" onClick={addTodo}>add ToDo</button>
         </div>
     </form>
 }
