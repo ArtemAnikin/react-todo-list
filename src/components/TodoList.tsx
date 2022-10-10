@@ -7,10 +7,8 @@ interface ITodoListProps {
     items: ITodoData[]
 }
 
-const TodoList:React.FC<ITodoListProps> = (props) => {
+const TodoList:React.FC<ITodoListProps> = ({items}) => {
     
-    const {items} = props;
-
     return <div className="todo-list">
         {
             items.map((todo, index) => 
