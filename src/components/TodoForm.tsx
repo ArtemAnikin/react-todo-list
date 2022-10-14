@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 
 import './TodoForm.scss';
+import { ITodoData } from '../types/dataItem';
 
-const TodoForm: React.FC = () => {
+interface ITodoFormProps {
+  addTodo: (item: ITodoData) => void;
+}
+
+const TodoForm: React.FC<ITodoFormProps> = ({ addTodo }) => {
   const [value, setValue] = useState('');
 
-  const addTodo = () => {
+  const createTodo = () => {
     if (value.trim().length > 0) {
-      console.log('value =', value);
+      const todo: ITodoData = {
+        id: Date.now(),
+        title: value,
+        complete: false,
+      };
+
+      addTodo(todo);
       setValue('');
     }
   };
@@ -22,7 +33,7 @@ const TodoForm: React.FC = () => {
         />
       </div>
       <div className="form-btns">
-        <button type="button" onClick={addTodo}>
+        <button type="button" onClick={createTodo}>
           add To Do
         </button>
       </div>
