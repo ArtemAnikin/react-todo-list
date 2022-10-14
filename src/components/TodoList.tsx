@@ -6,13 +6,17 @@ import React from 'react';
 
 interface ITodoListProps {
   items: ITodoData[];
+  deleteTodo: (itemId: number) => void;
 }
 
-const TodoList: React.FC<ITodoListProps> = ({ items }) => {
+const TodoList: React.FC<ITodoListProps> = (props) => {
+
+  const { items , deleteTodo} = props;
+
   return (
     <div className="todo-list">
       {items.map((todo, index) => (
-        <TodoItem key={index} {...todo} />
+        <TodoItem key={index} item={todo} deleteTodo={deleteTodo}/>
       ))}
     </div>
   );
