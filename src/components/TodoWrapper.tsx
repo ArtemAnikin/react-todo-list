@@ -12,14 +12,29 @@ const TodoWrapper: React.FC = () => {
   };
 
   const deleteTodo = (itemId: number) => {
-    setItems(items.filter(el => el.id !== itemId));
-  }
+    setItems(items.filter((el) => el.id !== itemId));
+  };
+
+  const completeTodo = (itemId: number) => {
+    setItems(
+      items.map((el) => {
+        if (el.id === itemId) {
+          el.complete = !el.complete;
+        }
+        return el;
+      })
+    );
+  };
 
   return (
     <div className="todo-wrapper">
       <h1>To Do List</h1>
       <TodoForm addTodo={addTodo} />
-      <TodoList items={items} deleteTodo={deleteTodo} />
+      <TodoList
+        items={items}
+        deleteTodo={deleteTodo}
+        completeTodo={completeTodo}
+      />
     </div>
   );
 };

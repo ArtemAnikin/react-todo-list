@@ -1,10 +1,14 @@
-.todo-item{
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid red;
-    border-radius: 25px;
-    padding: 10px 15px 10px 10px;
-    align-items: center;
-    margin: 10px auto;
+.todo-item {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid red;
+  border-radius: 25px;
+  padding: 10px 15px 10px 10px;
+  align-items: center;
+  margin: 10px auto;
+  &.complete {
+    opacity: 0.5;
+    background-color: grey;
+  }
 }
