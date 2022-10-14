@@ -1,22 +1,20 @@
-import { ITodoData } from "../types/dataItem"
-import { TodoItem } from "./TodoItem";
+import { ITodoData } from '../types/dataItem';
+import { TodoItem } from './TodoItem';
 
-import "./TodoList.scss"
+import './TodoList.scss';
+import React from 'react';
 
 interface ITodoListProps {
-    items: ITodoData[]
+  items: ITodoData[];
 }
 
-const TodoList:React.FC<ITodoListProps> = ({items}) => {
-    
-    return <div className="todo-list">
-        {
-            items.map((todo, index) => 
-            <TodoItem 
-            key={index}
-            {...todo}
-            />)
-        }
+const TodoList: React.FC<ITodoListProps> = ({ items }) => {
+  return (
+    <div className="todo-list">
+      {items.map((todo, index) => (
+        <TodoItem key={index} {...todo} />
+      ))}
     </div>
-}
-export {TodoList}
+  );
+};
+export { TodoList };
