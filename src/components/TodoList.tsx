@@ -8,22 +8,28 @@ interface ITodoListProps {
   items: ITodoData[];
   deleteTodo: (itemId: number) => void;
   completeTodo: (itemId: number) => void;
+  updateTodo: (itemId: number, ItemTitle: string) => void;
 }
 
 const TodoList: React.FC<ITodoListProps> = (props) => {
-  const { items, deleteTodo, completeTodo } = props;
-
-  return (
-    <div className="todo-list">
-      {items.map((todo, index) => (
-        <TodoItem
-          key={index}
-          item={todo}
-          deleteTodo={deleteTodo}
-          completeTodo={completeTodo}
-        />
-      ))}
-    </div>
-  );
+  return <div className="todo-list">{isEmpty(props)}</div>;
 };
 export { TodoList };
+
+function isEmpty(props: ITodoListProps) {
+  const { items, deleteTodo, completeTodo, updateTodo } = props;
+
+  if (!items.length) {
+    return <div> Can't find any To Do</div>;
+  } else {
+    return items.map((todo, index) => (
+      <TodoItem
+        key={index}
+        item={todo}
+        deleteTodo={deleteTodo}
+        completeTodo={completeTodo}
+        updateTodo={updateTodo}
+      />
+    ));
+  }
+}

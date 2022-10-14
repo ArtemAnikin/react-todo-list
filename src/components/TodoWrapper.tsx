@@ -26,6 +26,20 @@ const TodoWrapper: React.FC = () => {
     );
   };
 
+  const updateTodo = (itemId: number, itemTitle: string) => {
+    if (!itemTitle || /^\s*$/.test(itemTitle)) {
+      return;
+    }
+    setItems(
+      items.map((el) => {
+        if (el.id === itemId) {
+          el.title = itemTitle;
+        }
+        return el;
+      })
+    );
+  };
+
   return (
     <div className="todo-wrapper">
       <h1>To Do List</h1>
@@ -34,6 +48,7 @@ const TodoWrapper: React.FC = () => {
         items={items}
         deleteTodo={deleteTodo}
         completeTodo={completeTodo}
+        updateTodo={updateTodo}
       />
     </div>
   );
