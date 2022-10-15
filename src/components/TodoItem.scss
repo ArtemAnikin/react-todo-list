@@ -27,15 +27,20 @@
   }
   &.complete {
     opacity: 0.5;
-    background-color: ColorEnum.$light-blue;
+    background-color: ColorEnum.$complete-color;
     color: ColorEnum.$dark-blue;
     text-decoration: line-through;
   }
   &.complete .item-btns button {
     border-color: ColorEnum.$dark-blue;
-    background-color: ColorEnum.$light-blue;
+    background-color: ColorEnum.$complete-color;
     color: ColorEnum.$dark-blue;
     cursor: default;
+  }
+  &.complete .item-btns button:hover {
+    border-color: ColorEnum.$dark-blue;
+    background-color: ColorEnum.$complete-color;
+    color: ColorEnum.$dark-blue;
   }
   & .item-btns button {
     cursor: pointer;
