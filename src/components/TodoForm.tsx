@@ -23,8 +23,16 @@ const TodoForm: React.FC<ITodoFormProps> = ({ addTodo }) => {
     }
   };
 
+  const handleKeyDown = (event: any) => {
+    event.preventDefault();
+    createTodo();
+  };
+
   return (
-    <form className="todo-form">
+    <form
+      className="todo-form"
+      onKeyDown={(el) => (el.key === 'Enter' ? handleKeyDown(el) : undefined)}
+    >
       <div className="form-input">
         <input
           type="text"
