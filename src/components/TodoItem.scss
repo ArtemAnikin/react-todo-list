@@ -1,6 +1,7 @@
 @use 'ColorEnum';
 
 .todo-item {
+  position: relative;
   width: 80%;
   height: 55px;
   display: flex;
@@ -14,8 +15,11 @@
   align-items: center;
   margin: 5px auto;
 
+  & .item-title {
+    padding: 0 10px;
+  }
   & input:focus {
-    outline:none;
+    outline: none;
   }
 
   & .item-input input:hover {
@@ -23,7 +27,7 @@
   }
 
   &:hover {
-    border-width: 5px;
+    outline: 3px solid ColorEnum.$light-blue;
   }
   &.complete {
     opacity: 0.5;
@@ -42,6 +46,7 @@
     background-color: ColorEnum.$complete-color;
     color: ColorEnum.$dark-blue;
   }
+
   & .item-btns button {
     cursor: pointer;
     margin: 5px;

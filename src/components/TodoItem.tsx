@@ -2,7 +2,7 @@ import { ITodoData } from '../types/dataItem';
 
 import './TodoItem.scss';
 import React, { useState } from 'react';
-import { TodoForm } from './TodoForm';
+import { EditTodo } from './EditTodo';
 
 interface ITodoItemProps {
   item: ITodoData;
@@ -30,13 +30,13 @@ const TodoItem: React.FC<ITodoItemProps> = (props) => {
     setEdit(!edit);
   };
 
-  const newItem = (item: ITodoData) => {
-    props.updateTodo(id, item.title);
+  const newItem = (itemId: number, title: string) => {
+    props.updateTodo(itemId, title);
     setEdit(!edit);
   };
 
   if (edit) {
-    return <TodoForm addTodo={newItem} />;
+    return <EditTodo item={props.item} updateTodo={newItem} />;
   }
 
   return (
@@ -44,7 +44,9 @@ const TodoItem: React.FC<ITodoItemProps> = (props) => {
       <div className="item-input">
         <input type="checkbox" onChange={changeComplete} checked={complete} />
       </div>
-      {title}
+      <div onClick={complete ? undefined : editTodo} className="item-title">
+        {title}
+      </div>
       <div className="item-btns">
         <button onClick={editTodo} disabled={complete}>
           Edit
