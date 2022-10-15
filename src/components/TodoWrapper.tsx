@@ -43,6 +43,7 @@ const TodoWrapper: React.FC = () => {
   return (
     <div className="todo-wrapper">
       <h1>To Do List</h1>
+        <h5>React TS</h5>
       <TodoForm addTodo={addTodo} />
       <TodoList
         items={items}

@@ -1,14 +1,52 @@
+@use 'ColorEnum';
+
 .todo-item {
   width: 80%;
+  height: 55px;
   display: flex;
+  font-size: 23px;
   justify-content: space-between;
-  border: 1px solid red;
-  border-radius: 25px;
-  padding: 10px 15px 10px 10px;
+  border: 2px solid ColorEnum.$light-blue;
+  border-radius: 14px;
+  padding: 10px 10px 10px 15px;
   align-items: center;
-  margin: 10px auto;
+  margin: 5px auto;
+
+  & input:focus {
+    outline:none;
+  }
+
+  & .item-input input:hover {
+    cursor: pointer;
+  }
+
+  &:hover {
+    border-width: 5px;
+  }
   &.complete {
     opacity: 0.5;
-    background-color: grey;
+    background-color: ColorEnum.$light-blue;
+    color: ColorEnum.$dark-blue;
+    text-decoration: line-through;
+  }
+  &.complete .item-btns button {
+    border-color: ColorEnum.$dark-blue;
+    background-color: ColorEnum.$light-blue;
+    color: ColorEnum.$dark-blue;
+    cursor: default;
+  }
+  & .item-btns button {
+    cursor: pointer;
+    margin: 5px;
+    min-width: 54px;
+    min-height: 28px;
+    border-radius: 20px;
+    border: 2px solid ColorEnum.$light-blue;
+    background-color: ColorEnum.$dark-blue;
+    color: ColorEnum.$light-blue;
+  }
+  & .item-btns button:hover {
+    background-color: ColorEnum.$light-blue;
+    color: ColorEnum.$dark-blue;
   }
 }
