@@ -31,6 +31,7 @@ function isEmpty(props: ITodoListProps) {
     return items.map((todo, index) => (
       <TodoItem
         key={index}
+        order={changeOrder(items,index)}
         item={todo}
         deleteTodo={deleteTodo}
         completeTodo={completeTodo}
@@ -38,4 +39,14 @@ function isEmpty(props: ITodoListProps) {
       />
     ));
   }
+}
+
+function changeOrder(items:ITodoData[] , index:number){
+  let counter = -1;
+
+  if(items[index].complete){
+    counter++;
+    return items.length - counter;
+  }
+  return index
 }

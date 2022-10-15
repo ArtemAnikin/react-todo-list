@@ -9,6 +9,7 @@ interface ITodoItemProps {
   deleteTodo: (itemId: number) => void;
   completeTodo: (itemId: number) => void;
   updateTodo: (itemId: number, itemTitle: string) => void;
+  order: number;
 }
 
 const TodoItem: React.FC<ITodoItemProps> = (props) => {
@@ -40,7 +41,11 @@ const TodoItem: React.FC<ITodoItemProps> = (props) => {
   }
 
   return (
-    <div className={`todo-item ${complete ? 'complete' : ''}`} key={id}>
+    <div className={`todo-item ${complete ? 'complete' : ''}`}
+         style={{order: props.order}}
+         key={id}
+
+    >
       <div className="item-input">
         <input type="checkbox" onChange={changeComplete} checked={complete} />
       </div>
