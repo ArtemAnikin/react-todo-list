@@ -37,7 +37,9 @@ const TodoItem: React.FC<ITodoItemProps> = (props) => {
   };
 
   if (edit) {
-    return <EditTodo item={props.item} updateTodo={newItem} order={props.order}/>;
+    return (
+      <EditTodo item={props.item} updateTodo={newItem} order={props.order} />
+    );
   }
 
   return (
@@ -53,12 +55,8 @@ const TodoItem: React.FC<ITodoItemProps> = (props) => {
         {title}
       </div>
       <div className="item-btns">
-        <button onClick={editTodo} disabled={complete}>
-          Edit
-        </button>
-        <button onClick={deleteTodo} disabled={complete}>
-          Delete
-        </button>
+        <button onClick={editTodo}>Edit</button>
+        <button onClick={deleteTodo}>Delete</button>
       </div>
     </div>
   );
