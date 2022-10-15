@@ -8,6 +8,8 @@
   justify-content: space-between;
   border: 2px solid ColorEnum.$light-blue;
   border-radius: 14px;
+  background-color: ColorEnum.$wrapper-color;
+  color: ColorEnum.$light-blue;
   padding: 10px 10px 10px 15px;
   align-items: center;
   margin: 5px auto;
@@ -42,11 +44,11 @@
     min-height: 28px;
     border-radius: 20px;
     border: 2px solid ColorEnum.$light-blue;
-    background-color: ColorEnum.$dark-blue;
+    background-color: ColorEnum.$wrapper-color;
     color: ColorEnum.$light-blue;
   }
   & .item-btns button:hover {
     background-color: ColorEnum.$light-blue;
-    color: ColorEnum.$dark-blue;
+    color: ColorEnum.$wrapper-color;
   }
 }

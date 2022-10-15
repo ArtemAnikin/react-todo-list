@@ -3,4 +3,10 @@
   flex-direction: column;
   width: 100%;
   text-align: center;
+  & .empty-todos{
+    height: 215px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
 }

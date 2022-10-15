@@ -16,11 +16,17 @@ const TodoList: React.FC<ITodoListProps> = (props) => {
 };
 export { TodoList };
 
+
+
+
+
 function isEmpty(props: ITodoListProps) {
   const { items, deleteTodo, completeTodo, updateTodo } = props;
 
   if (!items.length) {
-    return <div> Can't find any To Do</div>;
+    return <div className="empty-todos">
+      <h1> Can't find any To Do</h1>
+    </div>;
   } else {
     return items.map((todo, index) => (
       <TodoItem
