@@ -37,14 +37,14 @@ const TodoItem: React.FC<ITodoItemProps> = (props) => {
   };
 
   if (edit) {
-    return <EditTodo item={props.item} updateTodo={newItem} />;
+    return <EditTodo item={props.item} updateTodo={newItem} order={props.order}/>;
   }
 
   return (
-    <div className={`todo-item ${complete ? 'complete' : ''}`}
-         style={{order: props.order}}
-         key={id}
-
+    <div
+      className={`todo-item ${complete ? 'complete' : ''}`}
+      style={{ order: props.order }}
+      key={id}
     >
       <div className="item-input">
         <input type="checkbox" onChange={changeComplete} checked={complete} />

@@ -6,10 +6,11 @@ import { ITodoData } from '../types/dataItem';
 interface IEditTodoProps {
   item: ITodoData;
   updateTodo: (itemId: number, itemTitle: string) => void;
+  order: number;
 }
 
 const EditTodo: React.FC<IEditTodoProps> = (props) => {
-  const { item, updateTodo } = props;
+  const { item, updateTodo , order} = props;
 
   const [value, setValue] = useState(item.title);
 
@@ -21,7 +22,7 @@ const EditTodo: React.FC<IEditTodoProps> = (props) => {
   };
 
   return (
-    <form className="todo-item">
+    <form className="todo-item" style={{order: order}}>
       <div className="item-input-edit">
         <input
           type="text"
