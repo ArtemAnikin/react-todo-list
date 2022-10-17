@@ -24,3 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 /.idea/jsLibraryMappings.xml
 /.idea/inspectionProfiles/Project_Default.xml
+package-lock.json
+package.json
