@@ -2,22 +2,23 @@ import { ITodoData } from '../types/dataItem';
 import { TodoForm } from './TodoForm';
 import { TodoList } from './TodoList';
 import './TodoWrapper.scss';
-import React, { useState } from 'react';
+import { FC } from 'react';
+import useLocalStorage from './hooks/UseLocalStorage';
 
-const TodoWrapper: React.FC = () => {
-  const [items, setItems] = useState<ITodoData[]>([]);
+const TodoWrapper: FC = () => {
+  const [items, setItems] = useLocalStorage<ITodoData[]>('key', []);
 
   const addTodo = (item: ITodoData) => {
     setItems([...items, item]);
   };
 
   const deleteTodo = (itemId: number) => {
-    setItems(items.filter((el) => el.id !== itemId));
+    setItems(items.filter((el: ITodoData) => el.id !== itemId));
   };
 
   const completeTodo = (itemId: number) => {
     setItems(
-      items.map((el) => {
+      items.map((el: ITodoData) => {
         if (el.id === itemId) {
           el.complete = !el.complete;
         }
@@ -31,7 +32,7 @@ const TodoWrapper: React.FC = () => {
       return;
     }
     setItems(
-      items.map((el) => {
+      items.map((el: ITodoData) => {
         if (el.id === itemId) {
           el.title = itemTitle;
         }
@@ -43,7 +44,7 @@ const TodoWrapper: React.FC = () => {
   return (
     <div className="todo-wrapper">
       <h1>To Do List</h1>
-        <h5>React TS</h5>
+      <h5>React TS</h5>
       <TodoForm addTodo={addTodo} />
       <TodoList
         items={items}
