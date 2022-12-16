@@ -1,4 +1,4 @@
-@use 'ColorEnum';
+@import '../../../../styles/ColorEnum';
 
 .todo-item {
   position: relative;
@@ -7,10 +7,10 @@
   display: flex;
   font-size: 23px;
   justify-content: space-between;
-  border: 2px solid ColorEnum.$light-blue;
+  border: 2px solid $light-blue;
   border-radius: 14px;
-  background-color: ColorEnum.$wrapper-color;
-  color: ColorEnum.$light-blue;
+  background-color: $wrapper-color;
+  color: $light-blue;
   padding: 10px 10px 10px 15px;
   align-items: center;
   margin: 5px auto;
@@ -27,12 +27,12 @@
   }
 
   &:hover {
-    outline: 3px solid ColorEnum.$light-blue;
+    outline: 3px solid $light-blue;
   }
   &.complete {
     opacity: 0.5;
-    background-color: ColorEnum.$complete-color;
-    color: ColorEnum.$dark-blue;
+    background-color: $complete-color;
+    color: $dark-blue;
     text-decoration: line-through;
   }
   & .item-btns button {
@@ -41,12 +41,12 @@
     min-width: 54px;
     min-height: 28px;
     border-radius: 20px;
-    border: 2px solid ColorEnum.$light-blue;
-    background-color: ColorEnum.$wrapper-color;
-    color: ColorEnum.$light-blue;
+    border: 2px solid $light-blue;
+    background-color: $wrapper-color;
+    color: $light-blue;
   }
   & .item-btns button:hover {
-    background-color: ColorEnum.$light-blue;
-    color: ColorEnum.$wrapper-color;
+    background-color: $light-blue;
+    color: $wrapper-color;
   }
 }

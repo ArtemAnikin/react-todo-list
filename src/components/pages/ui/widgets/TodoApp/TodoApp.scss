@@ -1,4 +1,4 @@
-@use 'ColorEnum';
+@import '../../../../../styles/ColorEnum';
 
 $wrapper-width: 500px;
 
@@ -15,10 +15,10 @@ $wrapper-width: 500px;
     align-items: center;
     width: 600px;
     min-height: 660px;
-    border: 14px solid ColorEnum.$light-blue;
+    border: 14px solid $light-blue;
     color: #013F78;
     border-radius: 52px;
-    background-color: ColorEnum.$wrapper-color;
+    background-color: $wrapper-color;
     margin: 50px auto 0;
     padding: 20px 0;
 }

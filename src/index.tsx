@@ -1,9 +1,6 @@
-import ReactDOM from 'react-dom/client';
-import App from './components/App';
+import ReactDOM from 'react-dom/client'
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-    <App />
-);
+import Home from 'components/pages/Home/Home'
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+root.render(<Home />)
