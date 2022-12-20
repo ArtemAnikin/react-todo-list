@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import './TodoForm.scss';
-import { ITodoData } from '../types/dataItem';
+import {ITodoData} from 'types/dataItem';
 
 interface ITodoFormProps {
   addTodo: (item: ITodoData) => void;

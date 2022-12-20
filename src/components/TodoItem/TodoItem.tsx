@@ -1,8 +1,8 @@
-import { ITodoData } from '../types/dataItem';
+import {ITodoData} from 'types/dataItem';
 
 import './TodoItem.scss';
-import React, { useState } from 'react';
-import { EditTodo } from './EditTodo';
+import React, {useState} from 'react';
+import {EditTodo} from '../EditTodo/EditTodo';
 
 interface ITodoItemProps {
   item: ITodoData;

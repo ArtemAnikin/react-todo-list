@@ -1,5 +1,5 @@
-import { ITodoData } from '../types/dataItem';
-import { TodoItem } from './TodoItem';
+import {ITodoData} from 'types/dataItem';
+import {TodoItem} from '../TodoItem/TodoItem';
 
 import './TodoList.scss';
 import React from 'react';

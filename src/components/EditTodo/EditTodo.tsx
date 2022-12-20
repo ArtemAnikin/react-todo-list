@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import './TodoItem.scss';
+import React, {useState} from 'react';
+import '../TodoItem/TodoItem.scss';
 import './EditTodo.scss';
-import { ITodoData } from '../types/dataItem';
+import {ITodoData} from 'types/dataItem';
 
 interface IEditTodoProps {
   item: ITodoData;
