@@ -1,14 +1,12 @@
 import { FC } from 'react'
+import { useSelector } from 'react-redux'
 import { TodoApp } from 'widgets/TodoApp/TodoApp'
 
-import useLocalStorage from 'hooks/UseLocalStorage'
-
-import { ITodoData } from 'types/dataItem'
-
 const HomePage: FC = () => {
-	const [items, setItems] = useLocalStorage<ITodoData[]>('key', [])
+	const items = useSelector(state => state)
 
-	return <TodoApp items={items} setItems={setItems} />
+	// @ts-ignore
+	return <TodoApp items={items} />
 }
 
 export default HomePage
