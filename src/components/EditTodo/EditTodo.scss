@@ -1,4 +1,4 @@
-@use 'ColorEnum';
+@import '../../assets/ColorEnum';
 
 .todo-item {
   & .item-input-edit {
@@ -15,7 +15,7 @@
     border: none;
     background: transparent;
     left: 75px;
-    border-bottom: 2px solid ColorEnum.$light-blue;
+    border-bottom: 2px solid $light-blue;
     padding: 0 15px;
   }
   & .item-input-edit input:hover {

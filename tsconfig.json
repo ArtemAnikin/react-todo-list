@@ -21,13 +21,12 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
+      "assets/*": ["assets/*"],
       "components/*": ["components/*"],
-      "components/pages/*": ["components/pages/*"],
-      "components/pages/ui/*": ["components/pages/ui/*"],
-
       "hooks/*": ["hooks/*"],
-      "styles/*": ["styles/*"],
+      "pages/*": ["pages/*"],
       "types/*": ["types/*"],
+      "widgets/*": ["widgets/*"],
       "store/*": ["store/*"],
     }
   },
