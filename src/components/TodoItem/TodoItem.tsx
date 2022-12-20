@@ -1,64 +1,66 @@
-import {ITodoData} from 'types/dataItem';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import './TodoItem.scss';
-import React, {useState} from 'react';
-import {EditTodo} from '../EditTodo/EditTodo';
+import { ITodoData } from 'types/dataItem'
+
+import { completeTodo, removeTodo, updateTodo } from 'store/actions'
+
+import { EditTodo } from '../EditTodo/EditTodo'
+
+import './TodoItem.scss'
 
 interface ITodoItemProps {
-  item: ITodoData;
-  deleteTodo: (itemId: number) => void;
-  completeTodo: (itemId: number) => void;
-  updateTodo: (itemId: number, itemTitle: string) => void;
-  order: number;
+	item: ITodoData
 }
 
-const TodoItem: React.FC<ITodoItemProps> = (props) => {
-  const [complete, setComplete] = useState(props.item.complete);
-  const [edit, setEdit] = useState(false);
+const TodoItem: React.FC<ITodoItemProps> = ({ item }) => {
+	const [edit, setEdit] = useState(false)
+	const dispatch = useDispatch()
 
-  const { id, title } = props.item;
+	const deleteTodoHandler = () => {
+		dispatch(removeTodo(item))
+	}
 
-  const deleteTodo = () => {
-    props.deleteTodo(id);
-  };
+	const changeComplete = () => {
+		dispatch(completeTodo(item))
+	}
 
-  const changeComplete = () => {
-    setComplete(!complete);
-    props.completeTodo(id);
-  };
+	const editTodoHandler = () => {
+		setEdit(!edit)
+	}
 
-  const editTodo = () => {
-    setEdit(!edit);
-  };
+	const newItem = (item: ITodoData) => {
+		dispatch(updateTodo(item))
+		setEdit(!edit)
+	}
 
-  const newItem = (itemId: number, title: string) => {
-    props.updateTodo(itemId, title);
-    setEdit(!edit);
-  };
+	if (edit) {
+		return <EditTodo item={item} updateTodo={newItem} />
+	}
 
-  if (edit) {
-    return (
-      <EditTodo item={props.item} updateTodo={newItem} order={props.order} />
-    );
-  }
-
-  return (
-    <div
-      className={`todo-item ${complete ? 'complete' : ''}`}
-      style={{ order: props.order }}
-      key={id}
-    >
-      <div className="item-input">
-        <input type="checkbox" onChange={changeComplete} checked={complete} />
-      </div>
-      <div onClick={complete ? undefined : editTodo} className="item-title">
-        {title}
-      </div>
-      <div className="item-btns">
-        <button onClick={editTodo}>Edit</button>
-        <button onClick={deleteTodo}>Delete</button>
-      </div>
-    </div>
-  );
-};
-export { TodoItem };
+	return (
+		<div
+			className={`todo-item ${item.complete ? 'complete' : ''}`}
+			key={item.id}
+		>
+			<div className='item-input'>
+				<input
+					type='checkbox'
+					onChange={changeComplete}
+					checked={item.complete}
+				/>
+			</div>
+			<div
+				onClick={item.complete ? undefined : editTodoHandler}
+				className='item-title'
+			>
+				{item.title}
+			</div>
+			<div className='item-btns'>
+				<button onClick={editTodoHandler}>Edit</button>
+				<button onClick={deleteTodoHandler}>Delete</button>
+			</div>
+		</div>
+	)
+}
+export { TodoItem }

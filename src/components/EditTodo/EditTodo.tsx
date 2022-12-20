@@ -1,41 +1,56 @@
-import React, {useState} from 'react';
-import '../TodoItem/TodoItem.scss';
-import './EditTodo.scss';
-import {ITodoData} from 'types/dataItem';
+import React, { useEffect, useRef, useState } from 'react'
+
+import { ITodoData } from 'types/dataItem'
+
+import '../TodoItem/TodoItem.scss'
+
+import './EditTodo.scss'
 
 interface IEditTodoProps {
-  item: ITodoData;
-  updateTodo: (itemId: number, itemTitle: string) => void;
-  order: number;
+	item: ITodoData
+	updateTodo: (item: ITodoData) => void
 }
 
-const EditTodo: React.FC<IEditTodoProps> = (props) => {
-  const { item, updateTodo , order} = props;
+const EditTodo: React.FC<IEditTodoProps> = props => {
+	const { item, updateTodo } = props
 
-  const [value, setValue] = useState(item.title);
+	const [value, setValue] = useState(item.title)
 
-  const saveTodo = () => {
-    updateTodo(item.id, value);
-  };
-  const cancelTodo = () => {
-    updateTodo(item.id, item.title);
-  };
+	const inputRef = useRef<HTMLInputElement>(null)
 
-  return (
-    <form className="todo-item" style={{order: order}}>
-      <div className="item-input-edit">
-        <input
-          type="text"
-          value={value}
-          onChange={(el) => setValue(el.target.value)}
-        />
-      </div>
-      <div className="item-btns">
-        <button onClick={saveTodo}>Save</button>
-        <button onClick={cancelTodo}>Cancel</button>
-      </div>
-    </form>
-  );
-};
+	useEffect(() => {
+		if (inputRef) {
+			inputRef.current?.focus()
+		}
+	}, [inputRef])
 
-export { EditTodo };
+	const saveTodo = () => {
+		updateTodo({ id: item.id, title: value, complete: false })
+	}
+	const cancelTodo = () => {
+		updateTodo(item)
+	}
+
+	return (
+		<form className='todo-item'>
+			<div className='item-input-edit'>
+				<input
+					ref={inputRef}
+					type='text'
+					value={value}
+					onChange={el => setValue(el.target.value)}
+				/>
+			</div>
+			<div className='item-btns'>
+				<button type='button' onClick={saveTodo}>
+					Save
+				</button>
+				<button type='button' onClick={cancelTodo}>
+					Cancel
+				</button>
+			</div>
+		</form>
+	)
+}
+
+export { EditTodo }
