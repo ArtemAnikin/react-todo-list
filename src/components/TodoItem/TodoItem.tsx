@@ -6,57 +6,54 @@ import {EditTodo} from '../EditTodo/EditTodo';
 
 interface ITodoItemProps {
   item: ITodoData;
-  deleteTodo: (itemId: number) => void;
-  completeTodo: (itemId: number) => void;
-  updateTodo: (itemId: number, itemTitle: string) => void;
-  order: number;
+  deleteTodo: (item: ITodoData) => void;
+  completeTodo: (item: ITodoData) => void;
+  updateTodo: (item: ITodoData) => void;
 }
 
-const TodoItem: React.FC<ITodoItemProps> = (props) => {
-  const [complete, setComplete] = useState(props.item.complete);
+const TodoItem: React.FC<ITodoItemProps> = ({item, ...props}) => {
+  const { deleteTodo, updateTodo, completeTodo } = props
+  const [complete, setComplete] = useState(item.complete);
   const [edit, setEdit] = useState(false);
 
-  const { id, title } = props.item;
-
-  const deleteTodo = () => {
-    props.deleteTodo(id);
+  const deleteTodoHandler = () => {
+    deleteTodo(item)
   };
 
   const changeComplete = () => {
     setComplete(!complete);
-    props.completeTodo(id);
+    completeTodo(item)
   };
 
-  const editTodo = () => {
+  const editTodoHandler = () => {
     setEdit(!edit);
   };
 
-  const newItem = (itemId: number, title: string) => {
-    props.updateTodo(itemId, title);
+  const newItem = (newItem: ITodoData) => {
+    updateTodo(newItem);
     setEdit(!edit);
   };
 
   if (edit) {
     return (
-      <EditTodo item={props.item} updateTodo={newItem} order={props.order} />
+      <EditTodo item={item} updateTodo={newItem} />
     );
   }
 
   return (
     <div
       className={`todo-item ${complete ? 'complete' : ''}`}
-      style={{ order: props.order }}
-      key={id}
+      key={item.id}
     >
       <div className="item-input">
         <input type="checkbox" onChange={changeComplete} checked={complete} />
       </div>
-      <div onClick={complete ? undefined : editTodo} className="item-title">
-        {title}
+      <div onClick={complete ? undefined : editTodoHandler} className="item-title">
+        {item.title}
       </div>
       <div className="item-btns">
-        <button onClick={editTodo}>Edit</button>
-        <button onClick={deleteTodo}>Delete</button>
+        <button onClick={editTodoHandler}>Edit</button>
+        <button onClick={deleteTodoHandler}>Delete</button>
       </div>
     </div>
   );

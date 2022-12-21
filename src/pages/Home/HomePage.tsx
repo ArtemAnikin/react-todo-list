@@ -1,14 +1,12 @@
 import { FC } from 'react'
 import { TodoApp } from 'widgets/TodoApp/TodoApp'
 
-import useLocalStorage from 'hooks/UseLocalStorage'
-
-import { ITodoData } from 'types/dataItem'
+import { useTypedSelector } from 'hooks/useTypedSelector'
 
 const HomePage: FC = () => {
-	const [items, setItems] = useLocalStorage<ITodoData[]>('key', [])
+	const items = useTypedSelector(state => state.todoApp.items)
 
-	return <TodoApp items={items} setItems={setItems} />
+	return <TodoApp items={items} />
 }
 
 export default HomePage
