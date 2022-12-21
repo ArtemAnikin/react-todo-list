@@ -5,24 +5,22 @@ import {ITodoData} from 'types/dataItem';
 
 interface IEditTodoProps {
   item: ITodoData;
-  updateTodo: (itemId: number, itemTitle: string) => void;
-  order: number;
+  updateTodo: (item:ITodoData) => void;
 }
 
-const EditTodo: React.FC<IEditTodoProps> = (props) => {
-  const { item, updateTodo , order} = props;
+const EditTodo: React.FC<IEditTodoProps> = ({item,updateTodo}) => {
 
   const [value, setValue] = useState(item.title);
 
   const saveTodo = () => {
-    updateTodo(item.id, value);
+    updateTodo({...item, title:value});
   };
   const cancelTodo = () => {
-    updateTodo(item.id, item.title);
+    updateTodo(item);
   };
 
   return (
-    <form className="todo-item" style={{order: order}}>
+    <form className="todo-item">
       <div className="item-input-edit">
         <input
           type="text"
